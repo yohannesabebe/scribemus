@@ -1,14 +1,64 @@
+*{
+background-color: #141221;
+font-family: 'Poppins', sans-serif;
+border: none !important;
+}
 .App{
-  font-size: 30px;
-  color: blue;
+font-size: 30px;
+color: #656c88;
+margin:0.4em 1.2em;
+}
+#navBar{
+  margin-bottom: 7rem;
+  color: #656c88;
+  border-style: dotted;
+}
+#scribemus-text-logo{
+  display: inline-block;
+  border: 1px dotted;
+  margin-right: 1.5rem;
+}
+#website-name{
+  display: inline-block;
+  color: #e9e7c8;
+}
+#scribemus-logo{
+  width: 2em;
   }
-  .correct{
-    color: green;
+.navBar > .button{
+
+}
+#navBar > #navButtonContainer{
+  max-width: 39.5em;
+  width: 100%;
+  display: inline-flex;
+  border: 1px dotted;
+  justify-content:flex-start;
+  /* justify-content: space-between; */
+  align-items:center;
+  align-content:space-between;
+}
+.profile{
+ margin-left: auto;
   }
-  .incorrect{
-      color:red;
-  }
-  .nextUp{
-    color: brown !important;
-    text-decoration: underline;
-  } 
+.about{
+  height: 2.4rem;
+}
+.correct{
+  color: #424861;
+}
+.incorrect{
+    color:red;
+}
+.nextUp{
+  color: #9ca2b9;
+  text-decoration: underline;
+} 
+.text-field{
+  border: 0.01rem;
+  border-style: dashed;
+  font-size: 2rem;
+}
+
+
+

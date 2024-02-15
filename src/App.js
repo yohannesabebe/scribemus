@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar.js'
 import Textfield from './components/Textfield.js';
 import dict from './dict.js'
-
+import Timer from './components/Timer.js'
 
 function App() {
   const [sentences_state] = React.useState(dict)
@@ -13,6 +13,7 @@ function App() {
       <Textfield 
       sentences = {sentences_state}
       />
+      {/* <Timer /> */}
       
     </div>
   );

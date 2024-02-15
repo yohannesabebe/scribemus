@@ -7,21 +7,37 @@ export default function Textfield(props){
     const [inputList, setInputList] = React.useState([])
 
     const inputRef = React.createRef(null);
+    
+    let [timeArr, setTimeArr] = React.useState([]);
+
+    
+    
+    let [wpm, setWpm] = React.useState(0)
+
 
     React.useEffect(() => {
       // Focus on the input field when the component mounts
       inputRef.current.focus();
+      
     }, []);
-  
+
+         
  
-    const start = new Date();
-    console.log(start/1000)
+    
 function handleKeyPress(event){   
 // check if the pressed key is a character  
 if (!event.key[1]){
+
+    let time = new Date();
+    setTimeArr((prevTime) => [...prevTime, (time.getTime()/1000)/60])
+
+    let calculateWpm = (timeArr.length/5.0)/(timeArr[timeArr.length - 1] - timeArr[0])
+    setWpm(calculateWpm)
+
+
     // updates the list of the user input
     setInputList((prevList) => [...prevList, event.key]);  
-    
+
     setvalues(prevValues => prevValues.map((obj, index) => {
     if(inputList.length === index){
             
@@ -31,8 +47,12 @@ if (!event.key[1]){
                 return{...obj, attempt:true}}}
     else{return obj}
     
-}))
-}
+            })
+        )
+    }
+// else if(event.key == "Backspace"){
+//     setInputList(prevList => prevList.slice(0, prevList.length - 1))
+// }
 }
 
  
@@ -53,8 +73,9 @@ let inpVar=  inputList.map(  inp => {
 
 })
     return(
-        <div  ref ={inputRef} onKeyDown={handleKeyPress} tabIndex={0}>
-           {charVar} <div>{inpVar}</div>
+        <div  ref ={inputRef} onKeyDown={handleKeyPress} tabIndex={0} className="text-field">
+           {charVar}
+            <div>{Math.round(wpm)}</div>
         </div>
     )
 
