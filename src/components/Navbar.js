@@ -3,10 +3,11 @@ import scribemusLogo from '../images/temple.png'
 import userPng from '../images/user.png'
 import keyboardPng from '../images/keyboard.png'
 import aboutPng from '../images/about.png'
-export default function Navbar(){
-    function startClick() {
-        return("Start")
-    }
+export default function Navbar(props){
+    // function startClick() {
+        
+    //     return () => props.start()
+    // }
     function aboutClick() {
     return("about")
     }
@@ -21,7 +22,7 @@ export default function Navbar(){
             </nav>
             <nav id="navButtonContainer">
             {/* <button onClick={startClick } className="startTest button">Start Test</button> */}
-            <img src={keyboardPng} onClick={startClick}  alt="keyboard" className="start button"></img>
+            <img src={keyboardPng} onClick={props.start}  alt="keyboard" className="start button"></img>
             <img src={aboutPng}  onClick={aboutClick}  alt='about' className='about button'></img>
             {/* <button onClick={aboutClick} className="about button">About</button> */}
             {/* <button onClick={profileClick} className="button" id="account"> */}

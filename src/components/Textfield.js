@@ -2,6 +2,7 @@ import React from "react";
 
 
 export default function Textfield(props){
+   
     const [values, setvalues] = React.useState(props.sentences)
     // const sentences = props.sentences
     const [inputList, setInputList] = React.useState([])
@@ -9,8 +10,6 @@ export default function Textfield(props){
     const inputRef = React.createRef(null);
     
     let [timeArr, setTimeArr] = React.useState([]);
-
-    
     
     let [wpm, setWpm] = React.useState(0)
 
@@ -55,14 +54,29 @@ if (!event.key[1]){
 // }
 }
 
- 
+
 let charVar = values.map( (char, index) => {
-    let handleClassName = char.attempt? char.correct? 'attempted correct':'attempted incorrect':'no_attempt'
+    // let handleClassName = char.attempt? char.correct? 'attempted correct':'attempted incorrect':'no_attempt'
+    let handleClassName;
+    
+    if (char.attempt) {
+        if (char.correct) {
+            // setCorrect(prevCorr => prevCorr + 1)
+            handleClassName = 'attempted correct'
+        }
+        else{
+            handleClassName = "attempted incorrect"
+        }
+    }
+    else{
+        handleClassName = 'no-attempt'
+    }
     handleClassName += inputList.length === index ? " nextUp":""
- 
             return <span
+                    key={index}
                     className={handleClassName}
                     >
+                        
                         {char.val} 
                    </span>
 
@@ -72,6 +86,7 @@ let inpVar=  inputList.map(  inp => {
     return <span>{inp}</span>
 
 })
+
     return(
         <div  ref ={inputRef} onKeyDown={handleKeyPress} tabIndex={0} className="text-field">
            {charVar}
